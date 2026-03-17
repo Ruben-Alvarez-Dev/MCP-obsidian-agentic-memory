@@ -1,4 +1,4 @@
-import type { Vault } from '../entities/Vault.js';
+import { Vault } from '../entities/Vault.js';
 
 /**
  * Service for vault management.

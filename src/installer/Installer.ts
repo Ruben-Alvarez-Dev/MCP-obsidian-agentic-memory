@@ -1,5 +1,5 @@
 import * as fs from 'fs/promises';
-import type { InstallMode, AgentType, InstallOptions } from '../core/interfaces/types.js';
+import type { AgentType, InstallOptions } from '../core/interfaces/types.js';
 import { AdapterFactory } from '../adapters/AdapterFactory.js';
 import { Vault } from '../core/entities/Vault.js';
 

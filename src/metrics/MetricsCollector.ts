@@ -1,4 +1,5 @@
-import type { IMetricsCollector, MetricsReport, BenchmarkResult, InstallMode } from '../core/interfaces/types.js';
+import type { MetricsReport, BenchmarkResult, InstallMode } from '../core/interfaces/types.js';
+import type { IMetricsCollector } from '../core/interfaces/IMetricsCollector.js';
 import { FileSystemNoteRepository } from '../infrastructure/repositories/FileSystemNoteRepository.js';
 
 /**

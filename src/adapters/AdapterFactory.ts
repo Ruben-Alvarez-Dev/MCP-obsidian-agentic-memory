@@ -9,34 +9,37 @@ import { OpenCodeAdapter } from './opencode/OpenCodeAdapter.js';
  * Follows Factory Pattern.
  */
 export class AdapterFactory {
-  private static readonly adapters: Map<AgentType, () => IAgentAdapter> = new Map([
-    ['claude', () => new ClaudeCodeAdapter()],
-    ['goose', () => new GooseAdapter()],
-    ['opencode', () => new OpenCodeAdapter()],
-  ]);
-
   /**
    * Create an adapter for the specified agent type.
    */
   public static create(type: AgentType): IAgentAdapter {
-    const factory = this.adapters.get(type);
-    if (!factory) {
-      throw new Error(`Unknown agent type: ${type}`);
+    switch (type) {
+      case 'claude':
+        return new ClaudeCodeAdapter();
+      case 'goose':
+        return new GooseAdapter();
+      case 'opencode':
+        return new OpenCodeAdapter();
+      default:
+        throw new Error(`Unknown agent type: ${type}`);
     }
-    return factory();
   }
 
   /**
    * Create all available adapters.
    */
   public static createAll(): IAgentAdapter[] {
-    return Array.from(this.adapters.values()).map((factory) => factory());
+    return [
+      new ClaudeCodeAdapter(),
+      new GooseAdapter(),
+      new OpenCodeAdapter(),
+    ];
   }
 
   /**
    * Get supported agent types.
    */
   public static getSupportedTypes(): AgentType[] {
-    return Array.from(this.adapters.keys());
+    return ['claude', 'goose', 'opencode'];
   }
 }
